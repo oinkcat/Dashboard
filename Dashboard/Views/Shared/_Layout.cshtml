@@ -1,0 +1,43 @@
+﻿@{ 
+    const string AppName = "Панель показателей";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-logo h4" href="/">
+                    <span class="glyphicon glyphicon-dashboard navbar-text"></span>
+                </a>
+                @Html.ActionLink(AppName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">default</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="body-content container">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – @AppName</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="@Url.Content("~/Scripts/chartist.min.js")"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

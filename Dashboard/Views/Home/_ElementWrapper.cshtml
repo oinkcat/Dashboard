@@ -1,0 +1,29 @@
+﻿@model Dashboard.Models.Structure.Indicator
+@{
+    string widthClass = String.Concat("col-md-", Model.Width);
+    string extraClassName = $"db-elem-{Model.Style}";
+
+    // Доступные шаблоны для отображения элементов
+    string[] availableTemplates = { };
+}
+
+<div class="@widthClass db-wrapper @extraClassName">
+    <div class="db-indicator">
+        @if (Model.Title != null)
+        {
+            <div class="db-indicator-title">
+                @Model.Title
+            </div>
+            <div class="db-indicator-content">
+                @if (availableTemplates.Contains(Model.TemplateName))
+                {
+                    @Html.Partial(Model.TemplateName, Model)
+                }
+                else
+                {
+                    @Html.DisplayForModel()
+                }
+            </div>
+        }
+    </div>
+</div>
