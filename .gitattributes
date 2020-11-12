@@ -63,4 +63,4 @@
 #*.RTF   diff=astextplain
 
 # Exclude library files from stats
-Dashboard/Scripts/*.js linguist-vendored=true
+Dashboard/Scripts/* linguist-vendored=true
