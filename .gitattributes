@@ -63,4 +63,5 @@
 #*.RTF   diff=astextplain
 
 # Exclude library files from stats
-DashboardCore/wwwroot/lib/* linguist-vendored=true
+DashboardCore/wwwroot/lib/css/* linguist-vendored=true
+DashboardCore/wwwroot/lib/js/* linguist-vendored=true
