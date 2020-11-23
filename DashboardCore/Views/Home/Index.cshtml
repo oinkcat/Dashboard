@@ -1,0 +1,31 @@
+﻿@model DashboardPage
+@{
+    ViewBag.Title = "Панель";
+
+    ViewBag.ChartsCode = new List<string>();
+}
+
+@foreach(var section in Model.Sections)
+{
+    <div class="row db-section">
+        @foreach(var item in section.Indicators)
+        {
+            @Html.Partial("_ElementWrapper", item)
+        }
+    </div>
+}
+
+@{ 
+    var chartsCode = ViewBag.ChartsCode as List<string>;
+
+    if(chartsCode.Count > 0)
+    {
+        string codeLines = String.Join(Environment.NewLine, chartsCode);
+
+        @section scripts {
+            <script type="text/javascript">
+                @Html.Raw(codeLines)
+            </script>
+        }
+    }
+}

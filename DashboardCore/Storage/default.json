@@ -1,0 +1,78 @@
+﻿[
+  {
+    "Id": "default",
+    "DataSource": "default",
+    "Sections": [
+      // Значки сверху
+      {
+        "WidthRatios": "1/1/1",
+        "Indicators": [
+          {
+            "Type": "Gauge",
+            "Title": "Показатель 1",
+            "Value": 65,
+            "Props": {
+              "Color": "#880000"
+            }
+          },
+          {
+            "Type": "Gauge",
+            "Title": "Показатель 2",
+            "DataItem": "value",
+            "Props": {
+              "Color": "#008800"
+            }
+          },
+          {
+            "Type": "Gauge",
+            "Title": "Показатель 3",
+            "Value": 15,
+            "Props": {
+              "Color": "#880000"
+            }
+          }
+        ]
+      },
+      // Диаграмма и график
+      {
+        "WidthRatios": "1/2",
+        "Indicators": [
+          {
+            "Type": "Graph",
+            "Title": "Распределение значений",
+            "TemplateName": "Pie",
+            "DataItem": "pie_distrib"
+          },
+          {
+            "Type": "Graph",
+            "Title": "Показатели по дням",
+            "TemplateName": "Line",
+            "DataItem": "days"
+          }
+        ]
+      },
+      // Список и график
+      {
+        "WidthRatios": "4/3",
+        "Indicators": [
+          {
+            "Type": "List",
+            "Title": "Список элементов",
+            "Items": [
+              "Элемент 1",
+              "Элемент 2",
+              "Еще один элемент",
+              "И еще один!"
+            ]
+          },
+          {
+            "Type": "Graph",
+            "Title": "Показатели по годам",
+            "TemplateName": "Bar",
+            "DataItem": "years"
+          }
+        ]
+      }
+    ]
+  }
+]
