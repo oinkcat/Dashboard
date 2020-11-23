@@ -63,6 +63,4 @@
 #*.RTF   diff=astextplain
 
 # Exclude library files from stats
-Dashboard/Scripts/* linguist-vendored=true
-Dashboard/Content/bootstrap.css linguist-vendored=true
-Dashboard/Content/chartist.min.css linguist-vendored=true
+DashboardCore/wwwroot/lib/* linguist-vendored=true
