@@ -59,3 +59,7 @@
 .ct-label {
     font-size: 8pt !important;
 }
+
+.chart-container {
+    height: 100%;
+}
