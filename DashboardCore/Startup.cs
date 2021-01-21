@@ -25,6 +25,7 @@ namespace DashboardCore
             services.AddControllersWithViews();
 
             services.AddSingleton<StorageConfig>();
+            services.AddTransient<DashboardDataLoader>();
             services.AddTransient<DashboardStructureLoader>();
         }
 

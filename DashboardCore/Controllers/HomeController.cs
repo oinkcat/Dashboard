@@ -15,7 +15,8 @@ namespace DashboardCore.Controllers
         // Имя загружаемой панели
         private const string PanelName = "default";
 
-        private readonly DashboardStructureLoader dashboardLoader;
+        private readonly DashboardStructureLoader structureLoader;
+        private readonly DashboardDataLoader dataLoader;
 
         private readonly ILogger<HomeController> logger;
 
@@ -24,9 +25,10 @@ namespace DashboardCore.Controllers
         /// </summary>
         public IActionResult Index()
         {
-            var dashboardPage = dashboardLoader.LoadFromFile(PanelName)[0];
+            var dashboard = structureLoader.LoadFromFile(PanelName);
+            dataLoader.LoadDataForDashboard(dashboard);
 
-            return View(dashboardPage);
+            return View(dashboard.Pages.First());
         }
 
         [ResponseCache(Duration = 0)]
@@ -41,10 +43,12 @@ namespace DashboardCore.Controllers
 
         public HomeController (
             ILogger<HomeController> logger, 
-            DashboardStructureLoader dashboardLoader
+            DashboardStructureLoader structureLoader,
+            DashboardDataLoader dataLoader
         ) {
-            this.dashboardLoader = dashboardLoader;
             this.logger = logger;
+            this.structureLoader = structureLoader;
+            this.dataLoader = dataLoader;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
+using DashboardCore.Models;
 using DashboardCore.Models.Structure;
 
 namespace DashboardCore.Services
@@ -20,7 +21,7 @@ namespace DashboardCore.Services
         /// </summary>
         /// <param name="panelName">Название панели для загрузки</param>
         /// <returns>Структура загруженной панели</returns>
-        public IList<DashboardPage> LoadFromFile(string panelName)
+        public Dashboard LoadFromFile(string panelName)
         {
             string filePath = Path.Combine(storagePath, $"{panelName}.json");
             string contents = File.ReadAllText(filePath);
@@ -32,10 +33,9 @@ namespace DashboardCore.Services
             foreach(var page in pages)
             {
                 page.ComputeWidths();
-                page.LoadData(storagePath);
             }
 
-            return pages;
+            return new Dashboard(panelName, pages);
         }
 
         public DashboardStructureLoader(StorageConfig config)

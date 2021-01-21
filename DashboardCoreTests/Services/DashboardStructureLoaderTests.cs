@@ -12,8 +12,7 @@ namespace DashboardCoreTests.Services
     public class DashboardStructureLoaderTests
     {
         // Физический путь к каталогу содержимого
-        private const string StoragePath = @"C:\Users\softc\source\repos\" +
-                                           @"Dashboard\DashboardCore";
+        private const string StoragePath = @"..\..\..\..\DashboardCore";
 
         // Название панели по умолчанию
         private const string DefaultPanelName = "default";
@@ -32,7 +31,7 @@ namespace DashboardCoreTests.Services
             var panelLoader = new DashboardStructureLoader(storageConfSvc);
 
             var layout = panelLoader.LoadFromFile(DefaultPanelName);
-            var firstPage = layout[0];
+            var firstPage = layout.Pages[0];
 
             Assert.NotNull(firstPage.Sections);
             Assert.NotNull(firstPage.Sections[0].Indicators);

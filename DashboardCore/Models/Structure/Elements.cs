@@ -102,19 +102,14 @@ namespace DashboardCore.Models.Structure
         /// <returns>Новый элемент указанного типа</returns>
         public static Indicator CreateWithType(string type)
         {
-            switch(type)
+            return type switch
             {
-                case "Label":
-                    return new Label();
-                case "Gauge":
-                    return new Gauge();
-                case "List":
-                    return new ItemsList();
-                case "Graph":
-                    return new Chart();
-                default:
-                    throw new ArgumentException("Неизвестный тип показателя");
-            }
+                "Label" => new Label(),
+                "Gauge" => new Gauge(),
+                "List" => new ItemsList(),
+                "Graph" => new Chart(),
+                _ => throw new ArgumentException("Неизвестный тип показателя"),
+            };
         }
     }
 
