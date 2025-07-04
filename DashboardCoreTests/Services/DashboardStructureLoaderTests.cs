@@ -30,7 +30,7 @@ namespace DashboardCoreTests.Services
             var storageConfSvc = new StorageConfig(hostingEnvMoq.Object);
             var panelLoader = new DashboardStructureLoader(storageConfSvc);
 
-            var layout = panelLoader.LoadFromFile(DefaultPanelName);
+            var layout = panelLoader.Load(DefaultPanelName);
             var firstPage = layout.Pages[0];
 
             Assert.NotNull(firstPage.Sections);

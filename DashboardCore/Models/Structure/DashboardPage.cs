@@ -2,36 +2,34 @@
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
-namespace DashboardCore.Models.Structure
+namespace DashboardCore.Models.Structure;
+
+/// <summary>
+/// Страница для отображения
+/// </summary>
+public class DashboardPage
 {
     /// <summary>
-    /// Страница для отображения
+    /// Идентификатор страницы
     /// </summary>
-    public class DashboardPage
+    public string Id { get; set; }
+
+    /// <summary>
+    /// Разделы показателей
+    /// </summary>
+    public List<Section> Sections { get; set; }
+
+    /// <summary>
+    /// Имя источника данных
+    /// </summary>
+    public string DataSource { get; set; }
+
+    /// <summary>
+    /// Посчитать ширину всех элементов страницы
+    /// </summary>
+    public void ComputeWidths()
     {
-        /// <summary>
-        /// Идентификатор страницы
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Разделы показателей
-        /// </summary>
-        public List<Section> Sections { get; set; }
-
-        /// <summary>
-        /// Имя источника данных
-        /// </summary>
-        public string DataSource { get; set; }
-
-        /// <summary>
-        /// Посчитать ширину всех элементов страницы
-        /// </summary>
-        public void ComputeWidths()
-        {
-            Sections.ForEach(s => s.ComputeWidths());
-        }
+        Sections.ForEach(s => s.ComputeWidths());
     }
 }
